@@ -22,7 +22,12 @@
                         <a class="nav-link" href="#">Giới thiệu <i class="fas fa-book-open"></i></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Sản Phẩm <i class="fas fa-guitar"></i></a>
+                        <li class="nav-item">
+                            <router-link :to="{ name: 'sanpham' }" class="nav-link">
+                                Sản phẩm
+                                <i class="fas fa-wrench"></i>
+                            </router-link>
+                        </li>
                     </li>
                     <div class="mr-auto navbar-nav">
                         <li class="nav-item">
