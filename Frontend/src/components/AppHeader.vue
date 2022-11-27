@@ -19,7 +19,12 @@
                         <a class="nav-link" href="#">Học Guitar <i class="fas fa-user-graduate"></i></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Giới thiệu <i class="fas fa-book-open"></i></a>
+                        <li class="nav-item">
+                            <router-link :to="{ name: 'gioithieu' }" class="nav-link">
+                                Giới Thiệu
+                                <i class="fas fa-wrench"></i>
+                            </router-link>
+                        </li>
                     </li>
                     <li class="nav-item">
                         <li class="nav-item">

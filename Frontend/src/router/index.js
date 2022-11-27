@@ -27,11 +27,17 @@ const routes = [
         component: () => import('../views/Login.vue'),
     },
     
-    // {
-    //     path: '/gioithieu',
-    //     name: 'gioithieu',
-    //     component: () => import('../views/gioithieu.vue'),
-    // },
+    {
+        path: '/gioithieu',
+        name: 'gioithieu',
+        component: () => import('../views/gioithieu.vue'),
+    },
+
+    {
+        path: '/chitietsp',
+        name: 'chitietsp',
+        component: () => import('../views/chitietsp.vue'),
+    },
 
     {
         path: '/sanpham',
