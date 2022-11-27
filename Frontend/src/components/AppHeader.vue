@@ -1,19 +1,30 @@
 <template>
     <nav class="navbar navbar-expand navbar-dark bg-dark">
-        <a href="/" class="navbar-brand">Ứng dụng Quản lý danh bạ</a>
-        <div class="mr-auto navbar-nav">
-            <li class="nav-item">
-                <router-link :to="{ name: 'login' }" class="nav-link">
-                    Đăng nhập
-
-                    <i class="fas fa-address-book" />
-                </router-link>
-                <!-- <router-link :to="{ name: 'register' }" class="nav-link">
-                    Đăng ký
-
-                    <i class="fas fa-address-book" />
-                </router-link> -->
-            </li>
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Nhạc Cụ Cần Thơ</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Trang chủ</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="#">Học Guitar</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="#">Giới thiệu</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="#">Sản Phẩm</a>
+                </li>
+            </ul>
+            <form class="d-flex" role="search">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+            </div>
         </div>
     </nav>
 </template>

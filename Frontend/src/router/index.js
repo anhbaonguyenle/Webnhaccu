@@ -1,14 +1,29 @@
 import { createWebHistory, createRouter } from 'vue-router';
 
 import Webnhaccu from '@/views/Webnhaccu.vue';
+
 import Login from '@/views/Login.vue';
 import Register from '@/views/Register.vue';
+// import Sanpham from '@/views/Sanpham.vue';
+// import gioithieu from '@/views/gioithieu.vue';
 
 
 const routes = [
+    
+    // {
+    //     path: '/',
+    //     name: 'gioithieu',
+    //     component: gioithieu,
+    // },
+    
     {
         path: '/',
-        name: 'webnhaccu',
+        name: 'Heroimg',
+        component: () => import('../views/Heroimg.vue'),
+    },
+    {
+        path: '/',
+        name: 'Webnhaccu',
         component: Webnhaccu,
     },
     {
@@ -21,6 +36,11 @@ const routes = [
         name: 'register',
         component: Register,
     },
+    // {
+    //     path: '/',
+    //     name: 'Sanpham',
+    //     component: Sanpham,
+    // }
 
 
     // {
