@@ -1,11 +1,6 @@
 import { createWebHistory, createRouter } from 'vue-router';
 
-import Webnhaccu from '@/views/Webnhaccu.vue';
 
-import Login from '@/views/Login.vue';
-import Register from '@/views/Register.vue';
-// import Sanpham from '@/views/Sanpham.vue';
-// import gioithieu from '@/views/gioithieu.vue';
 
 
 const routes = [
@@ -21,26 +16,23 @@ const routes = [
         name: 'Heroimg',
         component: () => import('../views/Heroimg.vue'),
     },
-    {
-        path: '/',
-        name: 'Webnhaccu',
-        component: Webnhaccu,
-    },
+    // {
+    //     path: '/',
+    //     name: 'Webnhaccu',
+    //     component: () => import('../views/Webnhaccu.vue'),
+    // },
     {
         path: '/login',
         name: 'login',
-        component: Login,
+        component: () => import('../views/Login.vue'),
     },
+    
+   
     {
-        path: '/register',
-        name: 'register',
-        component: Register,
-    },
-    // {
-    //     path: '/',
-    //     name: 'Sanpham',
-    //     component: Sanpham,
-    // }
+        path: '/sanpham',
+        name: 'sanpham',
+        component: () => import('../views/Sanpham.vue'),
+    }
 
 
     // {

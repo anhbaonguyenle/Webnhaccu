@@ -9,6 +9,7 @@ export default {
 
 <template>
    <div> <AppHeader /></div>
+   <div></div>
   <div><router-view /></div>
  
 </template>
