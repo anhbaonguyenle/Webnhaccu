@@ -1,25 +1,18 @@
-
-<template>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-3">left</div>
-            <div class="col-md-6">Midle</div>
-            <div class="col-md-3">right</div>
-            </div>
-        </div>
-    </div>
-</template>
-
-
 <script>
+import AppHeader from '@/components/AppHeader.vue';
 export default {
-}
+    components: {
+        AppHeader,
+    },
+};
 </script>
 
+<template>
+   <div> <AppHeader /></div>
+  <div><router-view /></div>
+ 
+</template>
 
-<style>
-.page {
-max-width: 400px;
-margin: auto;
-}
+<style scoped lang="postcss">
+
 </style>

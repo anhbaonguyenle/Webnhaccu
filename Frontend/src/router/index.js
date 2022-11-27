@@ -1,30 +1,47 @@
 import { createWebHistory, createRouter } from 'vue-router';
-import Webnhaccu from '@/views/Webnhaccu.vue';
 
-const routes = [{
+import Webnhaccu from '@/views/Webnhaccu.vue';
+import Login from '@/views/Login.vue';
+import Register from '@/views/Register.vue';
+
+
+const routes = [
+    {
         path: '/',
         name: 'webnhaccu',
         component: Webnhaccu,
     },
     {
-        path: '/contacts/:id',
-        name: 'contact.edit',
-        component: () =>
-            import ('@/views/ContactEdit.vue'),
-        props: (route) => ({ contactId: parseInt(route.params.id) })
+        path: '/login',
+        name: 'login',
+        component: Login,
     },
     {
-        path: '/:pathMatch(.*)*',
-        name: 'notfound',
-        component: () =>
-            import ('@/views/NotFound.vue'),
+        path: '/register',
+        name: 'register',
+        component: Register,
     },
-    {
-        path: '/contacts',
-        name: 'contact.add',
-        component: () =>
-            import ('@/views/ContactAdd.vue'),
-    },
+
+
+    // {
+    //     path: '/contacts/:id',
+    //     name: 'contact.edit',
+    //     component: () =>
+    //         import ('@/views/ContactEdit.vue'),
+    //     props: (route) => ({ contactId: parseInt(route.params.id) })
+    // },
+    // {
+    //     path: '/:pathMatch(.*)*',
+    //     name: 'notfound',
+    //     component: () =>
+    //         import ('@/views/NotFound.vue'),
+    // },
+    // {
+    //     path: '/contacts',
+    //     name: 'contact.add',
+    //     component: () =>
+    //         import ('@/views/ContactAdd.vue'),
+    // },
 ];
 
 const router = createRouter({
