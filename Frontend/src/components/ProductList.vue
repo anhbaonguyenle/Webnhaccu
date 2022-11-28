@@ -1,8 +1,8 @@
 <script>
 export default {
     props: {
-        admins: { type: Array, default: () => [] },
-        activeIndex: { type: Number, Text, default: -1 },
+        products: { type: Array, default: () => [] },
+        activeIndex: { type: String, default: -1 },
     },
     emits: ['update:activeIndex'], methods: {
         updateActiveIndex(index) {
@@ -15,9 +15,9 @@ export default {
 
 <template>
     <ul class="list-group">
-        <li class="list-group-item" v-for="(admin, index) in admins" :key="admin.id"
+        <li class="list-group-item" v-for="(product, index) in products" :key="product.id"
             :class="{ active: index === activeIndex }" @click="updateActiveIndex(index)">
-            {{ admin.name }}
+            {{ product.tennc }}
         </li>
     </ul>
 </template>

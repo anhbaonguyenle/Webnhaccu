@@ -1,77 +1,139 @@
 <template>
-    <div class="container">
-    <section class=" text-center text-lg-start">
-       
-        <div class="card mb-3">
-          <div class="row g-0 d-flex align-items-center">
-            <div class="col-lg-4 d-none d-lg-flex">
-              <img src="https://mdbootstrap.com/img/new/ecommerce/vertical/001.jpg" alt="Trendy Pants and Shoes"
-                class="w-100 rounded-t-5 rounded-tr-lg-0 rounded-bl-lg-5" />
-            </div>
-            <div class="col-lg-8">
-              <div class="card-body py-5 px-md-5">
-               
-                <form>
-                    <h2>Đăng nhập</h2>
-                    
-                  <!-- Email input -->
-                  <div class="form-outline mb-4">
-                    <input type="tel" id="phone" class="form-control" />
-                    <label class="form-label" for="phone">Số điện thoại</label>
-                  </div>
-      
-                  <!-- Password input -->
-                  <div class="form-outline mb-4">
-                    <input type="password" id="pass" class="form-control" />
-                    <label class="form-label" for="pass">Password</label>
-                  </div>
-      
-                  <!-- 2 column grid layout for inline styling -->
-                  <div class="row mb-4">
-                    <div class="col d-flex justify-content-center">
-                      <!-- Checkbox -->
-                      <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="form2Example31" checked />
-                        <label class="form-check-label" for="form2Example31"> Remember me </label>
-                      </div>
-                    </div>
-      
-                    <div class="col">
-                      <!-- Simple link -->
-                      <a href="#!">Forgot password?</a>
-                    </div>
-                  </div>
-      
-                  <!-- Submit button -->
-                  <button type="button" class="btn btn-primary btn-block mb-4">Đăng nhập</button>
-      
-                </form>
-      
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+  <div class="page row">
+    <div class="col-md-10">
+        <InputSearch v-model="searchText" />
     </div>
+    <div class="mt-3 col-md-6">
+        <h4>
+            Danh sách sản phẩm
+            <i class="fas fa-address-book" />
+        </h4>
+        <ProductList v-if="filteredContactsCount > 0" :products="filteredContacts"
+            v-model:activeIndex="activeIndex" />
+        <p v-else>
+            Không có sản phẩm nào
+        </p>
+
+        <div class="mt-3 row justify-content-around align-items-center">
+            <button class="btn btn-sm btn-primary" @click="refreshList()">
+                <i class="fas fa-redo" /> Làm mới
+            </button>
+
+            <button class="btn btn-sm btn-success" @click="goToAddProduct()">
+                <i class="fas fa-plus" /> Thêm mới
+            </button>
+
+            <button class="btn btn-sm btn-danger" @click="onDeleteProducts">
+                <i class="fas fa-trash" /> Xóa tất cả
+            </button>
+        </div>
+    </div>
+    <div class="mt-3 col-md-6">
+        <div v-if="activeProduct">
+            <h4>
+                Chi tiết sản phẩm
+                <i class="fas fa-address-card" />
+            </h4>
+            <ProductCard :product="activeProduct" />
+            <router-link :to="{
+                name: 'productedit',
+                params: { id: activeProduct.id },
+            }">
+                <span class="mt-2 badge badge-warning">
+                    <i class="fas fa-edit" /> Hiệu chỉnh</span>
+            </router-link>
+        </div>
+    </div>
+</div>
   </template>
-  <script>
-  export default {
-      name: 'Login',
-  }
-  </script>
-  <style>
-  .rounded-t-5 {
-  border-top-left-radius: 0.5rem;
-  border-top-right-radius: 0.5rem;
-  }
-  
-  @media (min-width: 992px) {
-  .rounded-tr-lg-0 {
-    border-top-right-radius: 0;
-  }
-  
-  .rounded-bl-lg-5 {
-    border-bottom-left-radius: 0.5rem;
-  }
-  }
-  </style>
+ <script>
+import ProductCard from "@/components/ProductCard.vue";
+import InputSearch from "@/components/InputSearch.vue";
+import ProductList from "@/components/ProductList.vue";
+import { productService } from '@/services/product.service';
+
+export default {
+    components: {
+        ProductCard,
+        InputSearch,
+        ProductList,
+    },
+    //The full code will be presented below
+    data() {
+        return {
+            products: [],
+            activeIndex: -1,
+            searchText: '',
+        };
+    },
+    watch: {
+        // Monitor changes on searchText
+        // Release the currently selected contact
+        searchText() {
+            this.activeIndex = -1;
+        },
+    },
+    computed: {
+        // Map contacts to strings for searching.
+        contactsAsStrings() {
+            return this.products.map((product) => {
+                const { tennc, maloai } = product;
+                return [tennc, maloai].join('');
+            });
+        },
+        // Return contacts filtered by the search box.
+        filteredContacts() {
+            if (!this.searchText) return this.products;
+            return this.products.filter((product, index) =>
+                this.contactsAsStrings[index].includes(this.searchText)
+            );
+        },
+        activeProduct() {
+            if (this.activeIndex < 0) return null;
+            return this.filteredContacts[this.activeIndex];
+        },
+        filteredContactsCount() {
+            return this.filteredContacts.length;
+        },
+    },
+    methods: {
+        async retrieveContacts() {
+            try {
+                const productsList = await productService.getMany();
+                this.products = productsList.sort((current, next) =>
+                    current.tennc.localeCompare(next.tennc)
+                );
+            } catch (error) {
+                console.log(error);
+            }
+        },
+        refreshList() {
+            this.retrieveContacts();
+            this.activeIndex = -1;
+        },
+        async onDeleteProducts() {
+            if (confirm('Bạn muốn xóa tất cả Liên hệ?')) {
+                try {
+                    await productService.deleteMany();
+                    this.refreshList();
+                } catch (error) {
+                    console.log(error);
+                }
+            }
+        },
+        goToAddProduct() {
+            this.$router.push({ name: 'productadd' });
+        },
+    },
+    mounted() {
+        this.refreshList();
+    },
+};
+</script>
+
+<style scoped>
+.page {
+    text-align: left;
+    max-width: 750px;
+}
+</style>
