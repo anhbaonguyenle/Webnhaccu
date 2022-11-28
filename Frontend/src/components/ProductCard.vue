@@ -14,12 +14,22 @@ export default {
             {{ product.tennc }}
         </div>
         <div class="p-1">
+            <strong>Mã loại:</strong>
+            {{ product.maloai }}
+        </div>
+       
+        <div class="p-1">
             <strong>Giá:</strong>
             {{ product.gianc }}
         </div>
-        <div class="p-1">
+         <div class="p-1">
             <strong>Số lượng:</strong>
             {{ product.soluong }}
+        </div>
+       
+        <div class="p-1">
+            <strong>Mô tả:</strong>
+            {{ product.mota }}
         </div>
        
         

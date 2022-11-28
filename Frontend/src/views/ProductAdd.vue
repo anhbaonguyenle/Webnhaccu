@@ -1,7 +1,9 @@
 <template>
     <div v-if="product" class="page">
-        <h4>Hiệu chỉnh </h4>
-        <ProductForm :product="cproduct" @submit:product="onAddProduct" />
+        <section class=" text-center text-lg-start">
+        <h4>Hiệu chỉnh</h4>
+        </section>
+        <ProductForm :product="product" @submit:product="onAddProduct" />
         <p>{{ message }}</p>
     </div>
 
@@ -42,7 +44,7 @@ export default {
         async onAddProduct(product) {
             try {
                 await productService.create(product);
-                this.message = 'Liên hệ được cập nhật thành công.';
+                this.message = 'Sản phẩm được cập nhật thành công.';
             } catch (error) {
                 console.log(error);
             }
@@ -50,7 +52,7 @@ export default {
     },
     created() {
         this.message = '';
-        this.product = {tennc: '', maloai: '', gianc: '', mota: ''};
+        this.product = {tennc: '', gianc: '', maloai: '', soluong: '',   mota: ''};
     },
 };
 </script>

@@ -26,6 +26,26 @@ const routes = [
         name: 'login',
         component: () => import('../views/Login.vue'),
     },
+   
+    {
+        path: '/products',
+        name: 'productadd',
+        component: () => import('../views/ProductAdd.vue'),
+    },
+    {
+        path: '/products/:id',
+        name: 'productedit',
+        component: () => import('../views/ProductEdit.vue'),
+        props: (route) => ({ productId: parseInt(route.params.id) })
+
+    },
+    
+    {
+        path: '/admin',
+        name: 'admin',
+        component: () => import('../views/admin.vue'),
+    },
+   
     
     {
         path: '/gioithieu',

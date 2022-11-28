@@ -1,4 +1,7 @@
 <template>
+    <div class="container">
+       
+            <div class="card mb-3">
   <div class="page row">
     <div class="col-md-10">
         <InputSearch v-model="searchText" />
@@ -45,6 +48,8 @@
         </div>
     </div>
 </div>
+</div>  
+            </div>
   </template>
  <script>
 import ProductCard from "@/components/ProductCard.vue";
