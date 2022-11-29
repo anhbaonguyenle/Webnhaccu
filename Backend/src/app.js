@@ -13,7 +13,9 @@ const ApiError = require('./api-error');
 const app = express();
 app.use(cors());
 app.use(express.json());
-app.use('img',express.static('img'));
+
+
+app.use('/img', express.static('img'));
 
 app.get('/', (req, res) => {
     res.json({ message: 'Welcome to contact book application.' });

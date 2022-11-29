@@ -3,7 +3,7 @@ class ProductService {
     #getProduct(payload) {
         const product = {...payload };
         const productProperties = [
-            "tennc", "maloai", "gianc", "soluong", "image", "mota"
+            "tennc", "maloai", "gianc", "soluong", "img", "mota"
         ];
         // Remove non-contact properties
         Object.keys(product).forEach(function(key) {
