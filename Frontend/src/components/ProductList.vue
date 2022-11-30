@@ -19,6 +19,8 @@ export default {
         <li class="list-group-item" v-for="(product, index) in products" :key="product.id"
             :class="{ active: index === activeIndex }" @click="updateActiveIndex(index)">
             {{ product.tennc }}
+            <img :src="('http://localhost:3000/' + product.image)" width="50" height="50" />
+
         </li>
     </ul>
 </template>

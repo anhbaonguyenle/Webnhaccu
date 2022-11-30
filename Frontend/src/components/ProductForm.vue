@@ -32,11 +32,7 @@
                         <ErrorMessage name="soluong" class="error-feedback" />
 
                     </div>
-                    <!-- <div class="form-group">
-                    <label for="url">URL</label>
-                    <Field name="url" type="text" class="form-control" v-model="productLocal.url" />
 
-                </div> -->
 
                     <div class="form-group">
                         <label for="mota">Mô tả</label>
@@ -44,6 +40,20 @@
                         <ErrorMessage name="mota" class="error-feedback" />
 
                     </div>
+                    <div class="form-group">
+                        <label for="image">Hình ảnh</label>
+                        <Field name="image" type="text" class="form-control" v-model="productLocal.image" />
+                        <ErrorMessage name="mota" class="error-feedback" />
+
+                    </div>
+
+                    <!-- <div class="form-group">
+                        <label for="myfile">Select image:</label>
+                        <input type="file" id="myfile" class="form-control-file" v-on:click="getName" @change="onFileSelected"> -->
+                        <!-- <Field name="image" type="file" class="form-control" v-model="productLocal.image" /> -->
+
+                    <!-- </div> -->
+
 
                     <div class="form-group">
                         <button class="btn btn-primary">Lưu</button>
@@ -60,7 +70,9 @@
 <script>
 import * as yup from 'yup';
 import { Form, Field, ErrorMessage } from 'vee-validate';
+import { generateCodeFrame } from '@vue/shared';
 export default {
+
     components: {
         Form,
         Field,
@@ -74,34 +86,30 @@ export default {
         const productFormSchema = yup.object().shape({
             tennc: yup
                 .string()
-                .required('Tên phải có giá trị.')
-                .min(2, 'Tên phải ít nhất 2 ký tự.')
-                .max(50, 'Tên có nhiều nhất 50 ký tự.'),
+                .required('Tên phải có giá trị.'),
 
-            mota: yup.string().max(100, 'Địa chỉ tối đa 100 ký tự.'),
+
+            mota: yup.string()
+                .required('Tên phải có giá trị.'),
             gianc: yup
-                .string()
-                .matches(
-                    /((09|03|07|08|05)+(\d{8})\b)/g,
-                    'Giá không hợp lệ.'
-                ),
+                .number()
+
+                .min(1),
             maloai: yup
-                .string()
-                .matches(
-                    /((09|03|07|08|05)+(\d{8})\b)/g,
-                    'Giá không hợp lệ.'
-                ),
+                .number()
+
+                .min(1),
+
             soluong: yup
-                .string()
-                .matches(
-                    /((09|03|07|08|05)+(\d{8})\b)/g,
-                    'Giá không hợp lệ.'
-                ),
+                .number()
+
+                .min(1),
         });
         return {
             // Props are supposed to be immutable, therefore create
             // a local variable contactLocal and bind it to the form
             productLocal: {
+               
                 ...this.product
 
             },
@@ -110,12 +118,31 @@ export default {
         };
     },
     methods: {
+        // getName(){
+        //     // document.getElementById("myfile").src;
+        //     console.log(document.getElementById("myfile").value)
+        // },
         submitProduct() {
             this.$emit('submit:product', this.productLocal);
         },
         deleteProduct() {
             this.$emit('delete:product', this.productLocal.id);
         },
+        // selectImage () {
+        //     this.$refs.fileInput.click()
+        // },
+        // pickFile () {
+        //   let input = this.$refs.fileInput
+        //   let file = input.files
+        //   if (file && file[0]) {
+        //     let reader = new FileReader
+        //     reader.onload = e => {
+        //       this.previewImage = e.target.result
+        //     }
+        //     reader.readAsDataURL(file[0])
+        //     this.$emit('input', file[0])
+        //   }
+        // },
     },
 };
 </script>

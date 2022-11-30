@@ -15,15 +15,15 @@
     
 </script>
 <template>
-    <div class="card" v-for="(product) in products" :key="product.id">
+    <!-- <div class="card" v-for="(product) in products" :key="product.id">
         <img src="../assets/2.jpg" class="card-img-top" alt="..." />
                     <p text-align:center>{{ product.tennc }}</p>
                     <h5 text-align:center>{{ product.gianc }} đ</h5>
                     <button><router-link :to="{ name: 'chitietsp' }">
                                         Mua ngay
                                     </router-link></button>
+       <div> -->
        <div>
-       
         <p  
             v-for="(product) in products"
             :key="product.id"
@@ -59,7 +59,7 @@
         <button><router-link :to="{ name: 'chitietsp' }">
                             Mua ngay
                         </router-link></button> -->
-    </div>
+
     <!-- <div>
        
         <p  

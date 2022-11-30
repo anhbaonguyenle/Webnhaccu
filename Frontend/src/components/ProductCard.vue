@@ -14,6 +14,10 @@ export default {
             {{ product.tennc }}
         </div>
         <div class="p-1">
+            <strong></strong>
+            <img :src="('http://localhost:3000/' + product.image)" width="150" height="100" />
+        </div>
+        <div class="p-1">
             <strong>Mã loại:</strong>
             {{ product.maloai }}
         </div>

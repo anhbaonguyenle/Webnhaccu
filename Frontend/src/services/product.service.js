@@ -25,7 +25,7 @@ class ProductService {
         return (await this.api.get(`${this.baseUrl}/${id}`)).data;
     }
     async update(id, product) {
-        return (await this.apt.put(`${this.baseUrl}/${id}`, product)).data;
+        return (await this.api.put(`${this.baseUrl}/${id}`, product)).data;
     }
     async delete(id) {
         return (await this.api.delete(`${this.baseUrl}/${id}`)).data;

@@ -1,6 +1,8 @@
 <template>
     <div v-if="product" class="page">
-        <h4>Hiệu chỉnh </h4>
+        <section class=" text-center text-lg-start">
+            <h4>Hiệu chỉnh</h4>
+            </section>
         <ProductForm :product="product" @submit:product="onUpdateProduct" @delete:product="onDeleteProduct" />
         <p>{{ message }}</p>
     </div>

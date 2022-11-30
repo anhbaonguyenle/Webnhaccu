@@ -2,7 +2,7 @@
     <div v-if="product" class="page">
         <section class=" text-center text-lg-start">
         <h4>Hiệu chỉnh</h4>
-        </section>
+        </section >
         <ProductForm :product="product" @submit:product="onAddProduct" />
         <p>{{ message }}</p>
     </div>
@@ -52,7 +52,7 @@ export default {
     },
     created() {
         this.message = '';
-        this.product = {tennc: '', gianc: '', maloai: '', soluong: '',   mota: ''};
+        this.product = {tennc: '', gianc: '', maloai: '', soluong: '', image:'',   mota: ''};
     },
 };
 </script>

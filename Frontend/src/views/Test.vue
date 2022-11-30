@@ -1,57 +1,13 @@
-<script>
-    import Display from '../components/Display.vue';
-    import { productService } from '../services/product.service';
-
-    export default {
-        components: {
-            Display,
-        },
-        data() {
-           return {
-            products: [],
-           } 
-        },
-        methods: {
-            async getProducts() {
-            try {
-                const productsList = await productService.getMany();
-                this.products = productsList.sort((current, next) =>
-                    current.tennc.localeCompare(next.tennc)
-                );
-            } catch (error) {
-                console.log(error);
-            }
-        },
-            // async addPokemon() {
-            //     const newPokemon = {
-            //         pid: '252',
-            //         name: 'Treecko',
-            //         img: 'https://assets.pokemon.com/assets/cms2/img/pokedex/full/252.png',
-            //         type1: 'Grass',
-            //         type2: 'None',
-            //     }
-
-            //     const res = await apiRequest.post('/pokemon', newPokemon);
-            //     console.log(res);
-            //     // console.log(newPokemon)
-            //     this.getPokemons();
-            // }
-        },
-        mounted() {
-            this.getProducts();
-        }
-    }
-</script>
 <template>
-    <div>
-        <h1>This is the View</h1>
-        <!-- <button
-            @click="addPokemon()"
-        >
-            Add Pokemon
-        </button> -->
-        <Display 
-            :products="products"
-        />
-    </div>
+    <FilePreview></FilePreview>
 </template>
+ 
+<script>
+import FilePreview from '@/components/TestFile.vue';
+ 
+export default {
+  components: {
+    FilePreview
+  }
+}
+</script>

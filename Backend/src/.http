@@ -1,3 +1,12 @@
-GET http://localhost:3000/api/cont
+GET http://localhost:3000/api/products/1
 ###
-POST http://localhost:3000/api/cont
+PUT http://localhost:3000/api/products/1 HTTP/1.1
+
+{
+  "maloai": 2,
+  "tennc": "Fender CN-60S, Black",
+  "gianc": 6240000,
+  "soluong": null,
+  "image": "./img/test.png",
+  "mota": null
+}

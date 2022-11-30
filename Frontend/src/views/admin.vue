@@ -1,57 +1,63 @@
 <template>
     <div class="container">
-       
-            <div class="card mb-3">
-  <div class="page row">
-    <div class="col-md-10">
-        <InputSearch v-model="searchText" />
-    </div>
-    <div class="mt-3 col-md-6">
-        <h4>
-            Danh sách sản phẩm
-            <i class="fas fa-address-book" />
-        </h4>
-        <ProductList v-if="filteredContactsCount > 0" :products="filteredContacts"
-            v-model:activeIndex="activeIndex" />
-        <p v-else>
-            Không có sản phẩm nào
-        </p>
+        <div class="row">
+            <div class="col-3"></div>
+            <div class="col-6">
 
-        <div class="mt-3 row justify-content-around align-items-center">
-            <button class="btn btn-sm btn-primary" @click="refreshList()">
-                <i class="fas fa-redo" /> Làm mới
-            </button>
+                <!-- <div class="card mb-3"> -->
+                    <div class="page row">
+                        <div class="col-md-10">
+                            <InputSearch v-model="searchText" />
+                        </div>
+                        <div class="mt-3 col-md-6">
+                            <h4>
+                                Danh sách sản phẩm
+                               
+                            </h4>
+                            <ProductList v-if="filteredContactsCount > 0" :products="filteredContacts"
+                                v-model:activeIndex="activeIndex" />
+                            <p v-else>
+                                Không có sản phẩm nào
+                            </p>
 
-            <button class="btn btn-sm btn-success" @click="goToAddProduct()">
-                <i class="fas fa-plus" /> Thêm mới
-            </button>
+                            <div class="mt-3 row justify-content-around align-items-center">
+                                <button class="btn btn-sm btn-primary" @click="refreshList()">
+                                    <i class="fas fa-redo" /> Làm mới
+                                </button>
 
-            <button class="btn btn-sm btn-danger" @click="onDeleteProducts">
-                <i class="fas fa-trash" /> Xóa tất cả
-            </button>
-        </div>
-    </div>
-    <div class="mt-3 col-md-6">
-        <div v-if="activeProduct">
-            <h4>
-                Chi tiết sản phẩm
-                <i class="fas fa-address-card" />
-            </h4>
-            <ProductCard :product="activeProduct" />
-            <router-link :to="{
-                name: 'productedit',
-                params: { id: activeProduct.id },
-            }">
-                <span class="mt-2 badge badge-warning">
-                    <i class="fas fa-edit" /> Hiệu chỉnh</span>
-            </router-link>
-        </div>
-    </div>
-</div>
-</div>  
+                                <button class="btn btn-sm btn-success" @click="goToAddProduct()">
+                                    <i class="fas fa-plus" /> Thêm mới
+                                </button>
+
+                                <button class="btn btn-sm btn-danger" @click="onDeleteProducts">
+                                    <i class="fas fa-trash" /> Xóa tất cả
+                                </button>
+                            </div>
+                        </div>
+                        <div class="mt-3 col-md-6">
+                            <div v-if="activeProduct">
+                                <h4>
+                                    Chi tiết sản phẩm
+                                    <i class="fas fa-address-card" />
+                                </h4>
+                                <ProductCard :product="activeProduct" />
+                                <router-link :to="{
+                                    name: 'productedit',
+                                    params: { id: activeProduct.id },
+                                }">
+                                    <span class="mt-2 badge badge-warning">
+                                        <i class="fas fa-edit" /> Hiệu chỉnh</span>
+                                </router-link>
+                            </div>
+                        </div>
+                    </div>
+                <!-- </div> -->
+
             </div>
-  </template>
- <script>
+        </div>
+    </div>
+</template>
+<script>
 import ProductCard from "@/components/ProductCard.vue";
 import InputSearch from "@/components/InputSearch.vue";
 import ProductList from "@/components/ProductList.vue";
