@@ -1,4 +1,6 @@
 <template>
+  <!-- <metaname="viewport", content="width=device-width" initial-scale="1" shrink-to-fit="no"/> -->
+
   <div class="container">
   <section class=" text-center text-lg-start">
      

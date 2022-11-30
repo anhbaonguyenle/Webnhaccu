@@ -20,7 +20,7 @@
 
                     </div>
 
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                         <label for="maloai">Mã loại</label>
                         <Field name="maloai" type="number" class="form-control" v-model="productLocal.maloai" />
                         <ErrorMessage name="maloai" class="error-feedback" />
@@ -31,7 +31,7 @@
                         <Field name="soluong" type="number" class="form-control" v-model="productLocal.soluong" />
                         <ErrorMessage name="soluong" class="error-feedback" />
 
-                    </div>
+                    </div> -->
 
 
                     <div class="form-group">
@@ -41,7 +41,7 @@
 
                     </div>
                     <div class="form-group">
-                        <label for="image">Hình ảnh</label>
+                        <label for="image">Hình ảnh (./img/Tên hình)</label>
                         <Field name="image" type="text" class="form-control" v-model="productLocal.image" />
                         <ErrorMessage name="mota" class="error-feedback" />
 
@@ -87,23 +87,18 @@ export default {
             tennc: yup
                 .string()
                 .required('Tên phải có giá trị.'),
-
-
-            mota: yup.string()
-                .required('Tên phải có giá trị.'),
             gianc: yup
                 .number()
-
                 .min(1),
-            maloai: yup
-                .number()
+            // maloai: yup
+            //     .number()
 
-                .min(1),
+            //     .min(1),
 
-            soluong: yup
-                .number()
+            // soluong: yup
+            //     .number()
 
-                .min(1),
+            //     .min(1),
         });
         return {
             // Props are supposed to be immutable, therefore create

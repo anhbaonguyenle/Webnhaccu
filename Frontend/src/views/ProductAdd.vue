@@ -1,11 +1,16 @@
 <template>
+    <metaname="viewport", content="width=device-width" initial-scale="1" shrink-to-fit="no"/>
+
     <div v-if="product" class="page">
         <section class=" text-center text-lg-start">
         <h4>Hiệu chỉnh</h4>
         </section >
         <ProductForm :product="product" @submit:product="onAddProduct" />
-        <p>{{ message }}</p>
     </div>
+    <div>
+        <Box><p>{{ message }}</p></Box>
+    </div>
+
 
 </template>
 <script>
@@ -45,6 +50,7 @@ export default {
             try {
                 await productService.create(product);
                 this.message = 'Sản phẩm được cập nhật thành công.';
+                this.product = null;
             } catch (error) {
                 console.log(error);
             }
@@ -52,7 +58,7 @@ export default {
     },
     created() {
         this.message = '';
-        this.product = {tennc: '', gianc: '', maloai: '', soluong: '', image:'',   mota: ''};
+        this.product = {tennc:'', gianc:'', image:'', mota:''};
     },
 };
 </script>

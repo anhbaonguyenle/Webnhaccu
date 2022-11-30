@@ -1,102 +1,52 @@
 <script>
-    export default {
-      
-        props: {
-            products: { type: Array, default: () => [] },
-            activeIndex: { type: Number, default: -1 },
-        },
-       
-        created() {
-            console.log(this.products);
-        
-        },
+export default {
 
-    }
+    props: {
+        products: { type: Array, default: () => [] },
+        activeIndex: { type: Number, default: -1 },
+    },
     
+
+    created() {
+        console.log(this.products);
+
+    },
+   
+
+}
+
 </script>
+<style>
+.price {
+    color: #ed1c24;
+    font-size: 15px;
+    padding-left: 10px;
+}
+
+.price .currency {
+    color: #fd0;
+    font-family: Roboto-Medium;
+}
+</style>
 <template>
-<<<<<<< HEAD
-    <!-- <div class="card" v-for="(product) in products" :key="product.id">
-        <img src="../assets/2.jpg" class="card-img-top" alt="..." />
-=======
-    <div class="row row-cols-1 row-cols-md-4 g-4" width= "250px" height= "250px" >
-    <div class="card" v-for="(product) in products" :key="product.id" >
-        <img :src="('http://localhost:3000/' + product.image)" />
->>>>>>> 8f99eb97e0ce899577b3631702f2761ed875f6f3
-                    <p text-align:center>{{ product.tennc }}</p>
-                    <h5 text-align:center>{{ product.gianc }}đ</h5>
-                    <button><router-link :to="{ name: 'chitietsp' }">
-                                        Mua ngay
-                                    </router-link></button>
-       <div> -->
-       <div>
-<<<<<<< HEAD
-        <p  
-            v-for="(product) in products"
-            :key="product.id"
-        >
-            <div class="col-md-4">
-                <div class="item">
-            {{ product.tennc }}
-            
-            {{ product.gianc }}
-            {{ product.maloai }}
-         
+    <div class="container">
+        <H2>Sản phẩm của chúng tôi</H2>
+        <div class="row p-2">
+            <!-- <p v-for="(product) in products" :key="product.id">            </p> -->
+            <div v-for="(product) in products" :key="product.id" class="col-md-3 p-2 border m-2">
+                <img class="card-img-top" :src="('http://localhost:3000/' + product.image)" alt="Card image"
+                    style="width:100%" />
+                <div class="card-body">
 
-            <img :src="('http://localhost:3000/' + product.image)" />
+                <h4 class="card-title">{{ product.tennc }}</h4>
                 </div>
+                <p class="price">{{ product.gianc }}<span class="currency"></span>đ</p>
+
+            </div>
+
         </div>
-   
-    <a href="#">
-      
-        
-    </a>
-           
-              
-        </p>
-      
-=======
->>>>>>> 8f99eb97e0ce899577b3631702f2761ed875f6f3
+
+
     </div>
-</div>
-        <!-- <p  
-            v-for="(product) in products"
-            :key="product.id"
-        />
-        <img :src="('http://localhost:3000/' + product.image)" />
-        <p text-align:center> {{ product.tennc }} </p>
-        <h5 text-align:center> {{ product.gianc }} </h5>
-        <button><router-link :to="{ name: 'chitietsp' }">
-                            Mua ngay
-                        </router-link></button> -->
-
-    <!-- <div>
-       
-        <p  
-            v-for="(product) in products"
-            :key="product.id"
-        >
-            <div class="col-md-4">
-                <div class="item">
-            {{ product.tennc }}
-            
-            {{ product.gianc }}
-            {{ product.maloai }}
-         
-
-            <img :src="('http://localhost:3000/' + product.image)" />
-                </div>
-        </div>
-   
-    <a href="#">
-      
-        
-    </a>
-           
-              
-        </p>
-      
-    </div> -->
-
-   
+    
 </template>

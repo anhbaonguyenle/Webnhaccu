@@ -1,18 +1,26 @@
 <script>
-    import Display from '../components/Display.vue';
-    import { productService } from '../services/product.service';
+import Display from '../components/Display.vue';
+import { productService } from '../services/product.service';
 
-    export default {
-        components: {
-            Display,
+export default {
+    props: {
+            products: { type: Array, default: () => [] },
+            activeIndex: { type: Number, default: -1 },
         },
-        data() {
-           return {
+        created() {
+            console.log(this.products);
+        
+        },
+    components: {
+        Display,
+    },
+    data() {
+        return {
             products: [],
-           } 
-        },
-        methods: {
-            async getProducts() {
+        }
+    },
+    methods: {
+        async getProducts() {
             try {
                 const productsList = await productService.getMany();
                 this.products = productsList.sort((current, next) =>
@@ -22,23 +30,25 @@
                 console.log(error);
             }
         },
-          
-        },
-        mounted() {
-            this.getProducts();
-        }
+
+    },
+    mounted() {
+        this.getProducts();
     }
+}
 </script>
 <template>
-    <div>
-        <h1>This is the View</h1>
-        <!-- <button
-            @click="addPokemon()"
-        >
-            Add Pokemon
-        </button> -->
-        <Display 
-            :products="products"
-        />
+    <!-- <metaname="viewport", content="width=device-width" initial-scale="1" shrink-to-fit="no"/> -->
+
+<div class="container">
+        <div class="grid grid-col-2">
+            <div class="col">
+               
+                <div class="">
+                    <Display :products="products" />
+                </div>
+            </div>
+        </div>
     </div>
+
 </template>

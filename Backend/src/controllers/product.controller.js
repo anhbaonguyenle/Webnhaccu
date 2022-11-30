@@ -2,9 +2,6 @@ const ProductService = require('../services/products.service');
 const ApiError = require('../api-error');
 //Create and Save a new Contact
 exports.create = async(req, res, next) => {
-    if (!req.body?.maloai) {
-        return next(new ApiError(400, 'Ma loai can not be empty'));
-    }
     if (!req.body?.tennc) {
         return next(new ApiError(400, 'Ten nhac cu can not be empty'));
     }

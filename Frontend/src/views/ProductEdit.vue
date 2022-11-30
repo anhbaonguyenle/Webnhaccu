@@ -1,4 +1,6 @@
 <template>
+    <!-- <metaname="viewport", content="width=device-width" initial-scale="1" shrink-to-fit="no"/> -->
+
     <div v-if="product" class="page">
         <section class=" text-center text-lg-start">
             <h4>Hiệu chỉnh</h4>
@@ -28,6 +30,7 @@ export default {
         async getProduct(id) {
             try {
                 this.product = await productService.get(id);
+                
             } catch (error) {
                 console.log(error);
                 // Redirect to NotFound page and keep URL intact
