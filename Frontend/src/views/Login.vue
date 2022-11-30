@@ -1,6 +1,4 @@
 <template>
-  <!-- <metaname="viewport", content="width=device-width" initial-scale="1" shrink-to-fit="no"/> -->
-
   <div class="container">
   <section class=" text-center text-lg-start">
      
@@ -14,38 +12,20 @@
             <div class="card-body py-5 px-md-5">
              
               <form>
-                  <h2>Đăng nhập</h2>
+                  <h2>Đăng nhập cho người quản trị</h2>
                   
                 <!-- Email input -->
                 <div class="form-outline mb-4">
-                  <input type="tel" id="phone" class="form-control" />
-                  <label class="form-label" for="phone">Số điện thoại</label>
+                  <input type="tel" id="sdt" class="form-control"  v-model="sdt" placeholder="Số Điện Thoại"/>
                 </div>
     
                 <!-- Password input -->
                 <div class="form-outline mb-4">
-                  <input type="password" id="pass" class="form-control" />
-                  <label class="form-label" for="pass">Password</label>
-                </div>
-    
-                <!-- 2 column grid layout for inline styling -->
-                <div class="row mb-4">
-                  <div class="col d-flex justify-content-center">
-                    <!-- Checkbox -->
-                    <div class="form-check">
-                      <input class="form-check-input" type="checkbox" value="" id="form2Example31" checked />
-                      <label class="form-check-label" for="form2Example31"> Remember me </label>
-                    </div>
-                  </div>
-    
-                  <div class="col">
-                    <!-- Simple link -->
-                    <a href="#!">Forgot password?</a>
-                  </div>
+                  <input type="password" id="pass" class="form-control" v-model="pass" placeholder="Mật Khẩu của bạn"/>
                 </div>
     
                 <!-- Submit button -->
-                <button type="button" class="btn btn-primary btn-block mb-4">Đăng nhập</button>
+                <button type="button" v-on:click="login" class="btn btn-primary btn-block mb-4">Đăng nhập</button>
     
               </form>
     
@@ -57,9 +37,30 @@
   </div>
 </template>
 <script>
+
 export default {
     name: 'Login',
-}
+    data()
+    {
+      return {
+        sdt: '',
+        pass: ''
+      }
+    },
+    methods:{
+      async login()
+      {
+          if(this.sdt == "012345671111"& this.pass =="1234"){
+            this.$router.push({name: 'admin'})
+          }else{
+            this.$router.push({name: '/'});
+          } 
+        
+        console.log(this.sdt,this.pass)
+        
+      }
+    }
+};
 </script>
 <style>
 .rounded-t-5 {
